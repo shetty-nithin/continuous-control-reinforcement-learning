@@ -1,1 +1,12 @@
 venv/
+.venv/
+
+__pycache__/
+*.pyc
+
+.DS_Store
+
+*.pkl
+
+results/**/*.png
+results/**/*.csv
