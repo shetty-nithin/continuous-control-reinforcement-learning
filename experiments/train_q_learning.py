@@ -21,11 +21,11 @@ from utils.plotting import plot_episode_rewards
 #from utils.matrics import TrainingMatrics
 
 def main():
-    number_of_episodes = 100
+    number_of_episodes = 5000
     env = HalfCheetahEnvironment(seed=42)
     action_discretizer = ActionDiscretizer()
-    state_discretizer = StateDiscretizer(number_of_bins=5)
-    agent = QLearningAgent(number_of_actions=action_discretizer.get_number_of_actions())
+    state_discretizer = StateDiscretizer(number_of_bins=7)
+    agent = QLearningAgent(number_of_actions=action_discretizer.get_number_of_actions(), number_of_episodes=number_of_episodes)
     #matrics = TrainingMatrics()
 
     episode_results = []

@@ -10,7 +10,7 @@ from src.action_discretizer import ActionDiscretizer
 from src.q_learning import QLearningAgent
 
 env = gym.make("HalfCheetah-v5", render_mode="human")
-state_discretizer = StateDiscretizer(number_of_bins=5)
+state_discretizer = StateDiscretizer(number_of_bins=7)
 action_discretizer = ActionDiscretizer()
 agent = QLearningAgent(number_of_actions=action_discretizer.get_number_of_actions(), epsilon=0.0)
 

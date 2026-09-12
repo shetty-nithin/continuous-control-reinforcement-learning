@@ -1,6 +1,5 @@
 from src.action_discretizer import ActionDiscretizer
 
-
 def main():
     discretizer = ActionDiscretizer()
 
