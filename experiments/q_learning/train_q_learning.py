@@ -4,7 +4,9 @@ import sys
 sys.path.append(
     os.path.dirname(
         os.path.dirname(
-            os.path.abspath(__file__)
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
         )
     )
 )
@@ -13,9 +15,9 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from src.environment import HalfCheetahEnvironment
-from src.action_discretizer import ActionDiscretizer
-from src.state_discretizer import StateDiscretizer
+from src.common.environment import HalfCheetahEnvironment
+from src.common.action_discretizer import ActionDiscretizer
+from src.common.state_discretizer import StateDiscretizer
 from src.q_learning import QLearningAgent
 from utils.plotting import plot_episode_rewards
 #from utils.matrics import TrainingMatrics

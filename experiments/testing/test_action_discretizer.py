@@ -1,4 +1,17 @@
-from src.action_discretizer import ActionDiscretizer
+import os
+import sys
+
+sys.path.append(
+    os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
+    )
+)
+
+from src.common.action_discretizer import ActionDiscretizer
 
 def main():
     discretizer = ActionDiscretizer()

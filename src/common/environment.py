@@ -1,6 +1,5 @@
 import gymnasium as gym
 
-
 class HalfCheetahEnvironment:
     """
     Wrapper around the HalfCheetah-v5 gymnasium environment.

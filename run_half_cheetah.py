@@ -5,8 +5,8 @@ import time
 
 from collections import defaultdict
 
-from src.state_discretizer import StateDiscretizer
-from src.action_discretizer import ActionDiscretizer
+from src.common.state_discretizer import StateDiscretizer
+from src.common.action_discretizer import ActionDiscretizer
 from src.q_learning import QLearningAgent
 
 env = gym.make("HalfCheetah-v5", render_mode="human")
