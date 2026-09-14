@@ -23,7 +23,7 @@ from utils.plotting import plot_episode_rewards
 #from utils.matrics import TrainingMatrics
 
 def main():
-    number_of_episodes = 5000
+    number_of_episodes = 100
     env = HalfCheetahEnvironment(seed=42)
     action_discretizer = ActionDiscretizer()
     state_discretizer = StateDiscretizer(number_of_bins=7)
