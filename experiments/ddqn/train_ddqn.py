@@ -17,7 +17,7 @@ import torch
 
 from src.common.environment import HalfCheetahEnvironment
 from src.common.action_discretizer import ActionDiscretizer
-from src.dqn import DQNAgent
+from src.ddqn import DDQNAgent
 
 def main():
     number_of_episodes = 100
@@ -27,7 +27,7 @@ def main():
 
     number_of_actions = action_discretizer.get_number_of_actions()
 
-    agent = DQNAgent(
+    agent = DDQNAgent(
         state_dimension=state_dimension,
         number_of_actions=number_of_actions,
     )
@@ -43,8 +43,6 @@ def main():
         episode_reward = 0.0
         episode_losses = []
 
-        action_counts = np.zeros(number_of_actions, dtype=int)
-
         while not terminated and not truncated:
             action_id = agent.select_action(state)
             continuous_action = action_discretizer.get_action(action_id)
@@ -58,7 +56,6 @@ def main():
             if loss is not None:
                 episode_losses.append(loss)
 
-            action_counts[action_id] += 1
             state = next_state
             episode_reward += reward
 
@@ -82,17 +79,16 @@ def main():
         print(
             f"Episode {episode + 1} | "
             f"Reward: {episode_reward:.2f} | "
-            f"Loss: {mean_loss:.6f} | "
-            f"Epsilon: {agent.epsilon:.3f}"
+            f"Loss: {mean_loss:.6f}"
         )
 
     env.close()
 
-    os.makedirs("results/dqn", exist_ok=True)
-    torch.save(agent.online_network.state_dict(), "results/dqn/dqn_model.pt")
+    os.makedirs("results/ddqn", exist_ok=True)
+    torch.save(agent.online_network.state_dict(), "results/ddqn/ddqn_model.pt")
 
     dataframe = pd.DataFrame(episode_results)
-    dataframe.to_csv("results/dqn/training_results.csv", index=False)
+    dataframe.to_csv("results/ddqn/training_results.csv", index=False)
 
 if __name__ == "__main__":
     main()
